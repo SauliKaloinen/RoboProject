@@ -29,6 +29,8 @@ public class LineFollowerV2 extends Thread {
 		SensorMode redMode = cs.getRedMode();
 		redSample = new float[cs.sampleSize()];
 	}
+	
+	// GITHUB BRANCH TEST.
 
 	public void run() {
 		float lower = 0.15f;
