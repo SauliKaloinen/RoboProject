@@ -1,11 +1,13 @@
 package thread;
-//github testi
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import thread.DataExchange;
 import thread.LineFollowerV2;
 //import thread.ObstacleDetector;
 
+
+
+// Tihs is main progrem.
 public class Program {
 	private static ObstacleDetector OB;
 	private static DataExchange DE;
