@@ -1,5 +1,5 @@
 package thread;
-
+//github testi
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import thread.DataExchange;
