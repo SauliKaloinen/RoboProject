@@ -1,11 +1,13 @@
 package thread;
-
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import thread.DataExchange;
 import thread.LineFollowerV2;
 //import thread.ObstacleDetector;
 
+
+
+// This is main program.
 public class Program {
 	private static ObstacleDetector OB;
 	private static DataExchange DE;
