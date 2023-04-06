@@ -1,7 +1,9 @@
 package thread;
 
 public class DataExchange {
-
+	
+	//testi
+	
 	private boolean obstacleDetected = false;
 	private int CMD = 1; // follow line
 	private boolean dodge = false;
