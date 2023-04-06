@@ -7,7 +7,7 @@ import thread.LineFollowerV2;
 
 
 
-// Tihs is main progrem.
+// This is main program.
 public class Program {
 	private static ObstacleDetector OB;
 	private static DataExchange DE;
