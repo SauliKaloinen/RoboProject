@@ -47,20 +47,20 @@ public class LineFollowerV2 extends Thread {
 			LCD.drawString(String.valueOf(redSample[0]), 1, 3);
 			if (DEObj.getCMD() == 1) {
 				if (lower <= redSample[0] && redSample[0] <= upper) {
-					m1.setSpeed(100);
+					m1.setSpeed(50);
 					m1.forward();
-					m2.setSpeed(150);
+					m2.setSpeed(100);
 					m2.forward();
 
 				} else if (redSample[0] < lower) {
-					m1.setSpeed(150);
+					m1.setSpeed(100);
 					m1.forward();
-					m2.setSpeed(75);
+					m2.setSpeed(50);
 					m2.forward();
 				} else if (redSample[0] > upper) {
-					m1.setSpeed(75);
+					m1.setSpeed(50);
 					m1.forward();
-					m2.setSpeed(150);
+					m2.setSpeed(100);
 					m2.forward();
 				}
 				LCD.refresh();
@@ -68,6 +68,10 @@ public class LineFollowerV2 extends Thread {
 			
 			else if (lap == 1)
 			{
+				m1.stop();
+				m2.stop();
+				Delay.msDelay(1000);
+				LCD.drawString("Track complete!.", 0, 1);
 				m1.setSpeed(200);
 				m1.backward();
 				m2.setSpeed(200);
@@ -93,17 +97,17 @@ public class LineFollowerV2 extends Thread {
 				Delay.msDelay(2000);
 				m1.setSpeed(100);
 				m1.forward();
-				Delay.msDelay(1000);
-				m1.setSpeed(140);
+				Delay.msDelay(2000);
+				m1.setSpeed(125);
 				m1.forward();
 				m2.setSpeed(200);
 				m2.forward();
-				Delay.msDelay(4500);
+				Delay.msDelay(4000);
 				m1.setSpeed(100);
 				m1.forward();
 				m2.setSpeed(90);
 				m2.forward();
-				Delay.msDelay(2000);
+				Delay.msDelay(1500);
 				DEObj.setDodge(false);
 				Sound.beepSequence();
 			}
