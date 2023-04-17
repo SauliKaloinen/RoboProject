@@ -67,17 +67,16 @@ public class LineFollowerV2 extends Thread {
 				LCD.refresh();
 			}
 
-
 			else if (lap == 1) {
 				Sound.playSample(new File("Biisi.wav"));
 				m1.stop();
 				m2.stop();
 				Delay.msDelay(1000);
 				LCD.drawString("Track complete!.", 0, 1);
+			}
 
-			//program shut down + end dance after 1 full round.
-			else if (lap == 1)
-			{
+			// program shut down + end dance after 1 full round.
+			else if (lap == 1) {
 
 				m1.setSpeed(200);
 				m1.backward();
@@ -93,15 +92,10 @@ public class LineFollowerV2 extends Thread {
 
 			}
 
-
 			else {
-
-			//obstacle dodge.
-			else{
-
+				// obstacle dodge.
 				lap++;
 				LCD.drawString("Objects found: " + lap, 0, 1);
-				// DEObj.setDodge(true);
 				Sound.beep();
 				LCD.refresh();
 				m2.stop();
@@ -125,5 +119,6 @@ public class LineFollowerV2 extends Thread {
 			}
 
 		}
+
 	}
 }
