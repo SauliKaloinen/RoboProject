@@ -63,7 +63,7 @@ public class LineFollowerV2 extends Thread {
 				}
 				LCD.refresh();
 			}
-			
+			//program shut down + end dance after 1 full round.
 			else if (lap == 1)
 			{
 				m1.setSpeed(200);
@@ -79,7 +79,7 @@ public class LineFollowerV2 extends Thread {
 				System.exit(0);
 				
 			}
-			
+			//obstacle dodge.
 			else{
 				lap++;
 				LCD.drawString("Objects found: " + lap, 0, 1);
