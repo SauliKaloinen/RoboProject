@@ -1,5 +1,6 @@
 package thread;
 
+import java.io.File;
 
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
@@ -14,7 +15,7 @@ import lejos.utility.Delay;
 
 public class LineFollowerV2 extends Thread {
 	DataExchange DEObj;
-	
+
 	private int lap;
 
 	private EV3ColorSensor cs;
@@ -22,13 +23,15 @@ public class LineFollowerV2 extends Thread {
 
 	public LineFollowerV2(DataExchange DE) {
 		DEObj = DE;
-		
+
 		cs = new EV3ColorSensor(SensorPort.S3);
 
 		float redSample[];
 		SensorMode redMode = cs.getRedMode();
 		redSample = new float[cs.sampleSize()];
 	}
+
+	// GITHUB BRANCH TEST.
 
 	public void run() {
 		float lower = 0.15f;
@@ -45,27 +48,37 @@ public class LineFollowerV2 extends Thread {
 			LCD.drawString(String.valueOf(redSample[0]), 1, 3);
 			if (DEObj.getCMD() == 1) {
 				if (lower <= redSample[0] && redSample[0] <= upper) {
-					m1.setSpeed(100);
+					m1.setSpeed(50);
 					m1.forward();
-					m2.setSpeed(150);
+					m2.setSpeed(125);
 					m2.forward();
 
 				} else if (redSample[0] < lower) {
-					m1.setSpeed(150);
+					m1.setSpeed(125);
 					m1.forward();
-					m2.setSpeed(75);
+					m2.setSpeed(50);
 					m2.forward();
 				} else if (redSample[0] > upper) {
-					m1.setSpeed(75);
+					m1.setSpeed(50);
 					m1.forward();
-					m2.setSpeed(150);
+					m2.setSpeed(125);
 					m2.forward();
 				}
 				LCD.refresh();
 			}
+
+
+			else if (lap == 1) {
+				Sound.playSample(new File("Biisi.wav"));
+				m1.stop();
+				m2.stop();
+				Delay.msDelay(1000);
+				LCD.drawString("Track complete!.", 0, 1);
+
 			//program shut down + end dance after 1 full round.
 			else if (lap == 1)
 			{
+
 				m1.setSpeed(200);
 				m1.backward();
 				m2.setSpeed(200);
@@ -77,13 +90,18 @@ public class LineFollowerV2 extends Thread {
 				m2.backward();
 				Delay.msDelay(5000);
 				System.exit(0);
-				
+
 			}
+
+
+			else {
+
 			//obstacle dodge.
 			else{
+
 				lap++;
 				LCD.drawString("Objects found: " + lap, 0, 1);
-				//DEObj.setDodge(true);
+				// DEObj.setDodge(true);
 				Sound.beep();
 				LCD.refresh();
 				m2.stop();
@@ -91,12 +109,12 @@ public class LineFollowerV2 extends Thread {
 				Delay.msDelay(2000);
 				m1.setSpeed(100);
 				m1.forward();
-				Delay.msDelay(1000);
-				m1.setSpeed(140);
+				Delay.msDelay(1800);
+				m1.setSpeed(150);
 				m1.forward();
-				m2.setSpeed(200);
+				m2.setSpeed(225);
 				m2.forward();
-				Delay.msDelay(4500);
+				Delay.msDelay(5000);
 				m1.setSpeed(100);
 				m1.forward();
 				m2.setSpeed(90);
@@ -105,7 +123,7 @@ public class LineFollowerV2 extends Thread {
 				DEObj.setDodge(false);
 				Sound.beepSequence();
 			}
-			
+
 		}
 	}
 }
