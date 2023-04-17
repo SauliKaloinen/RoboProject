@@ -1,5 +1,5 @@
 package thread;
-
+//Github test Eetu
 public class DataExchange {
 
 	private boolean obstacleDetected = false;
