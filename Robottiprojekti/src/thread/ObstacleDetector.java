@@ -1,5 +1,6 @@
 package thread;
-//varo vaaraa
+
+
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -32,8 +33,7 @@ public class ObstacleDetector extends Thread {
 			// if (distance > securityDistance) {
 			if (distance > securityDistance && !DEObj.getDodge()) {
 				DEObj.setCMD(1);
-				
-				
+
 				// } else if (distance < securityDistance && DEObj.setDodge(true)) {
 			} else if (distance < securityDistance) {
 				DEObj.setCMD(0);
