@@ -67,27 +67,24 @@ public class LineFollowerV2 extends Thread {
 				LCD.refresh();
 			}
 
+			// program shut down + end dance after 1 full round.
 			else if (lap == 1) {
-				Sound.playSample(new File("Biisi.wav"));
 				m1.stop();
 				m2.stop();
 				Delay.msDelay(1000);
+				LCD.clear();
 				LCD.drawString("Track complete!.", 0, 1);
-			}
-
-			// program shut down + end dance after 1 full round.
-			else if (lap == 1) {
-
 				m1.setSpeed(200);
 				m1.backward();
 				m2.setSpeed(200);
 				m2.backward();
 				Delay.msDelay(1000);
-				m1.setSpeed(200);
+				m1.setSpeed(250);
 				m1.forward();
-				m2.setSpeed(200);
+				m2.setSpeed(250);
 				m2.backward();
-				Delay.msDelay(5000);
+				Sound.playSample(new File("Biisi.wav"), Sound.VOL_MAX);
+				//Delay.msDelay(4000);
 				System.exit(0);
 
 			}
@@ -98,22 +95,23 @@ public class LineFollowerV2 extends Thread {
 				LCD.drawString("Objects found: " + lap, 0, 1);
 				Sound.beep();
 				LCD.refresh();
-				m2.stop();
-				m1.stop();
-				Delay.msDelay(2000);
+				//m2.stop();
+				//m1.stop();
+				//Delay.msDelay(2000);
 				m1.setSpeed(100);
+				m2.stop();
 				m1.forward();
 				Delay.msDelay(1800);
 				m1.setSpeed(150);
 				m1.forward();
 				m2.setSpeed(225);
 				m2.forward();
-				Delay.msDelay(5000);
-				m1.setSpeed(100);
+				Delay.msDelay(4500);
+				m1.setSpeed(110);
 				m1.forward();
 				m2.setSpeed(90);
 				m2.forward();
-				Delay.msDelay(2000);
+				Delay.msDelay(2750);
 				DEObj.setDodge(false);
 				Sound.beepSequence();
 			}

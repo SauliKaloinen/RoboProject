@@ -30,9 +30,9 @@ public class ObstacleDetector extends Thread {
 		while (true) {
 			sp.fetchSample(distanceSample, 0);
 			float distance = distanceSample[0] * 100;
-			// if (distance > securityDistance) {
 			if (distance > securityDistance && !DEObj.getDodge()) {
 				DEObj.setCMD(1);
+			
 
 				// } else if (distance < securityDistance && DEObj.setDodge(true)) {
 			} else if (distance < securityDistance) {

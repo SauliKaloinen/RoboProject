@@ -16,10 +16,8 @@ public class Program {
 
 	public static void main(String[] args) {
 		DE = new DataExchange();
-		// ODObj = new ObstacleDetector(DE);
 		LFObj = new LineFollowerV2(DE);
 		OB = new ObstacleDetector(DE);
-		// ODObj.start();
 		OB.start();
 		LFObj.start();
 
