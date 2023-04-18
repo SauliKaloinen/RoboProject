@@ -48,20 +48,20 @@ public class LineFollowerV2 extends Thread {
 			LCD.drawString(String.valueOf(redSample[0]), 1, 3);
 			if (DEObj.getCMD() == 1) {
 				if (lower <= redSample[0] && redSample[0] <= upper) {
-					m1.setSpeed(50);
+					m1.setSpeed(125);
 					m1.forward();
-					m2.setSpeed(125);
+					m2.setSpeed(245);
 					m2.forward();
 
 				} else if (redSample[0] < lower) {
-					m1.setSpeed(125);
-					m1.forward();
-					m2.setSpeed(50);
-					m2.forward();
-				} else if (redSample[0] > upper) {
-					m1.setSpeed(50);
+					m1.setSpeed(245);
 					m1.forward();
 					m2.setSpeed(125);
+					m2.forward();
+				} else if (redSample[0] > upper) {
+					m1.setSpeed(125);
+					m1.forward();
+					m2.setSpeed(245);
 					m2.forward();
 				}
 				LCD.refresh();
