@@ -1,9 +1,8 @@
 package thread;
-//Github test Eetu
+
 public class DataExchange {
 
 	// This class exchanges data between the threads.
-
 	private boolean obstacleDetected = false;
 	private int CMD = 1; // follow line
 	private boolean dodge = false;
@@ -32,7 +31,6 @@ public class DataExchange {
 		return this.dodge;
 	}
 
-	// public boolean setDodge(boolean dodge) {
 	public void setDodge(boolean dodge) {
 		this.dodge = dodge;
 	}
