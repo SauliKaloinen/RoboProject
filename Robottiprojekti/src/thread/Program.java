@@ -1,18 +1,13 @@
 package thread;
+
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-import thread.DataExchange;
-import thread.LineFollowerV2;
-//import thread.ObstacleDetector;
-
-
 
 // This is main program.
 public class Program {
 	private static ObstacleDetector OB;
 	private static DataExchange DE;
 	private static LineFollowerV2 LFObj;
-	// private static ObstacleDetector ODObj;
 
 	public static void main(String[] args) {
 		DE = new DataExchange();
@@ -28,5 +23,4 @@ public class Program {
 		LCD.refresh();
 		System.exit(0);
 	}
-
 }

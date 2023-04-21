@@ -1,7 +1,6 @@
 package thread;
 
 import java.io.File;
-
 import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
@@ -17,13 +16,11 @@ public class LineFollowerV2 extends Thread {
 	DataExchange DEObj;
 
 	private int lap;
-
 	private EV3ColorSensor cs;
 	private EV3UltrasonicSensor us;
 
 	public LineFollowerV2(DataExchange DE) {
 		DEObj = DE;
-
 		cs = new EV3ColorSensor(SensorPort.S3);
 
 		float redSample[];
@@ -48,20 +45,20 @@ public class LineFollowerV2 extends Thread {
 			LCD.drawString(String.valueOf(redSample[0]), 1, 3);
 			if (DEObj.getCMD() == 1) {
 				if (lower <= redSample[0] && redSample[0] <= upper) {
-					m1.setSpeed(50);
+					m1.setSpeed(125);
 					m1.forward();
-					m2.setSpeed(125);
+					m2.setSpeed(245);
 					m2.forward();
 
 				} else if (redSample[0] < lower) {
-					m1.setSpeed(125);
-					m1.forward();
-					m2.setSpeed(50);
-					m2.forward();
-				} else if (redSample[0] > upper) {
-					m1.setSpeed(50);
+					m1.setSpeed(245);
 					m1.forward();
 					m2.setSpeed(125);
+					m2.forward();
+				} else if (redSample[0] > upper) {
+					m1.setSpeed(125);
+					m1.forward();
+					m2.setSpeed(245);
 					m2.forward();
 				}
 				LCD.refresh();
@@ -84,7 +81,6 @@ public class LineFollowerV2 extends Thread {
 				m2.setSpeed(250);
 				m2.backward();
 				Sound.playSample(new File("Biisi.wav"), Sound.VOL_MAX);
-				//Delay.msDelay(4000);
 				System.exit(0);
 
 			}
@@ -95,9 +91,6 @@ public class LineFollowerV2 extends Thread {
 				LCD.drawString("Objects found: " + lap, 0, 1);
 				Sound.beep();
 				LCD.refresh();
-				//m2.stop();
-				//m1.stop();
-				//Delay.msDelay(2000);
 				m1.setSpeed(100);
 				m2.stop();
 				m1.forward();
@@ -115,8 +108,6 @@ public class LineFollowerV2 extends Thread {
 				DEObj.setDodge(false);
 				Sound.beepSequence();
 			}
-
 		}
-
 	}
 }
