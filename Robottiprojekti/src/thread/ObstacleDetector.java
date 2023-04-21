@@ -25,7 +25,6 @@ public class ObstacleDetector extends Thread {
 			float distance = distanceSample[0] * 100;
 			if (distance > securityDistance && !DEObj.getDodge()) {
 				DEObj.setCMD(1);
-
 			} else if (distance < securityDistance) {
 				DEObj.setCMD(0);
 				DEObj.setDodge(true);
